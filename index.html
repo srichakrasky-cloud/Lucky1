@@ -1,484 +1,2527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LuckyPick • Customer Dashboard</title>
+
+<style>
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
+:root{
+    --primary:#6c35ff;
+    --primary2:#9b5cff;
+    --gold:#ffcf4a;
+    --dark:#0d0b18;
+    --card:#171327;
+    --text:#ffffff;
+    --muted:#a9a4bb;
+    --border:rgba(255,255,255,.09);
+    --green:#3fd18b;
+}
 
-body {
-
-    font-family: "Inter", sans-serif;
-
+body{
+    font-family:Inter,Arial,sans-serif;
     background:
         radial-gradient(
-            circle at top right,
-            #39215f 0,
-            #160d27 35%,
-            #090611 75%
-        );
+            circle at 15% 5%,
+            rgba(108,53,255,.28),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(255,207,74,.10),
+            transparent 25%
+        ),
+        #0d0b18;
 
-    color: #ffffff;
-
-    min-height: 100vh;
+    color:var(--text);
+    min-height:100vh;
 }
 
 
-/* HEADER */
+/* ================= HEADER ================= */
 
-.topbar {
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
 
-    height: 72px;
+    background:rgba(13,11,24,.88);
+    backdrop-filter:blur(16px);
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 0 6%;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    background:
-        rgba(8,5,15,.75);
-
-    backdrop-filter: blur(15px);
-
+    border-bottom:1px solid var(--border);
 }
 
+.nav{
+    max-width:1000px;
+    margin:auto;
 
-.logo {
+    padding:15px 18px;
 
-    font-size: 25px;
-
-    font-weight: 800;
-
-    color: #ffffff;
-
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-
-.logo span {
-
-    color: #f5c451;
-
-    margin-right: 7px;
-
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
 }
 
-
-.demo-badge {
-
-    padding: 7px 14px;
-
-    border-radius: 20px;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    color: #f5c451;
-
-    border:
-        1px solid rgba(245,196,81,.4);
-
-    background:
-        rgba(245,196,81,.08);
-
-}
-
-
-/* CONTAINER */
-
-.container {
-
-    width: 92%;
-
-    max-width: 1050px;
-
-    margin: auto;
-
-    padding: 45px 0 70px;
-
-}
-
-
-/* HERO */
-
-.hero {
-
-    padding: 35px 0 40px;
-
-}
-
-
-.small-title {
-
-    color: #f5c451;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 12px;
-
-}
-
-
-.hero h1 {
-
-    font-size: 46px;
-
-    line-height: 1.1;
-
-    font-weight: 800;
-
-}
-
-
-.hero h1 span {
-
-    display: block;
-
-    color: #f5c451;
-
-}
-
-
-.hero-text {
-
-    margin-top: 15px;
-
-    color: #aaa2b8;
-
-    font-size: 15px;
-
-}
-
-
-/* CARD */
-
-.card {
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(45,26,72,.88),
-            rgba(19,12,30,.94)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    border-radius: 22px;
-
-    padding: 30px;
-
-    margin-bottom: 25px;
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.3);
-
-}
-
-
-/* CARD TITLE */
-
-.card-title {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 25px;
-
-}
-
-
-.icon {
-
-    width: 45px;
-
-    height: 45px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 13px;
-
-    background:
-        rgba(245,196,81,.1);
-
-    border:
-        1px solid rgba(245,196,81,.25);
-
-}
-
-
-.card h2 {
-
-    font-size: 19px;
-
-}
-
-
-.card-title p {
-
-    color: #958da2;
-
-    font-size: 12px;
-
-    margin-top: 4px;
-
-}
-
-
-/* FORM */
-
-.form-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 18px;
-
-}
-
-
-.field {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-}
-
-
-.field.full {
-
-    grid-column: 1 / -1;
-
-}
-
-
-label {
-
-    font-size: 12px;
-
-    color: #bcb4c7;
-
-    font-weight: 600;
-
-}
-
-
-input {
-
-    width: 100%;
-
-    padding: 14px 15px;
-
-    border-radius: 11px;
-
-    border:
-        1px solid rgba(255,255,255,.1);
-
-    outline: none;
-
-    background:
-        rgba(0,0,0,.2);
-
-    color: white;
-
-    font-size: 14px;
-
-    transition: .2s;
-
-}
-
-
-input:focus {
-
-    border-color: #f5c451;
-
-    box-shadow:
-        0 0 0 3px rgba(245,196,81,.08);
-
-}
-
-
-input::placeholder {
-
-    color: #6e6777;
-
-}
-
-
-/* BUTTON */
-
-.primary-btn {
-
-    width: 100%;
-
-    margin-top: 25px;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 12px;
+.logo{
+    width:42px;
+    height:42px;
+
+    border-radius:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:
         linear-gradient(
             135deg,
-            #f7d36b,
-            #d99b27
+            var(--primary),
+            var(--primary2)
         );
 
-    color: #241600;
+    box-shadow:
+        0 8px 25px
+        rgba(108,53,255,.35);
 
-    font-size: 13px;
+    font-size:21px;
+}
 
-    font-weight: 800;
+.brand h1{
+    font-size:18px;
+    font-weight:800;
+}
 
-    letter-spacing: .8px;
+.brand span{
+    display:block;
 
-    cursor: pointer;
+    color:var(--muted);
 
-    transition: .2s;
+    font-size:10px;
 
+    margin-top:2px;
+
+    letter-spacing:1px;
 }
 
 
-.primary-btn:hover {
+/* ================= LOGOUT ================= */
 
-    transform: translateY(-2px);
+.logout-btn{
+    border:1px solid var(--border);
+
+    background:#171327;
+
+    color:#fff;
+
+    padding:9px 13px;
+
+    border-radius:10px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    border-color:var(--primary2);
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+    max-width:1000px;
+
+    margin:30px auto 15px;
+
+    padding:0 18px;
+}
+
+.hero-box{
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(108,53,255,.18),
+            rgba(255,255,255,.03)
+        );
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero-box:after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,207,74,.08);
+
+    right:-60px;
+    top:-70px;
+}
+
+.badge{
+    display:inline-block;
+
+    background:
+        rgba(255,207,74,.12);
+
+    color:var(--gold);
+
+    padding:7px 11px;
+
+    border-radius:30px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+}
+
+.hero h2{
+    font-size:30px;
+
+    line-height:1.15;
+}
+
+.hero p{
+    color:var(--muted);
+
+    margin-top:9px;
+
+    font-size:14px;
+}
+
+
+/* ================= MAIN ================= */
+
+.container{
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:15px 18px 50px;
+}
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        1.35fr .8fr;
+
+    gap:18px;
+}
+
+
+/* ================= CARD ================= */
+
+.card{
+    background:
+        rgba(23,19,39,.88);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:22px;
 
     box-shadow:
-        0 10px 25px rgba(217,155,39,.25);
+        0 15px 45px
+        rgba(0,0,0,.18);
 
+    margin-bottom:18px;
 }
 
+.card-title{
+    display:flex;
 
-/* MESSAGES */
+    align-items:center;
 
-.success {
+    gap:10px;
 
-    margin-top: 20px;
+    margin-bottom:18px;
+}
 
-    padding: 18px;
+.card-title .icon{
+    width:35px;
+    height:35px;
 
-    border-radius: 12px;
+    border-radius:10px;
 
     background:
-        rgba(80,200,120,.08);
+        rgba(108,53,255,.16);
 
-    border:
-        1px solid rgba(80,200,120,.25);
+    display:flex;
 
-    color: #d8ffe4;
+    align-items:center;
+    justify-content:center;
+}
 
-    line-height: 1.8;
+.card-title h3{
+    font-size:17px;
+}
 
+.card-title p{
+    font-size:11px;
+
+    color:var(--muted);
+
+    margin-top:3px;
 }
 
 
-.success h3 {
+/* ================= PROFILE ================= */
 
-    color: #76e39b;
+.profile-grid{
+    display:grid;
 
-    margin-bottom: 5px;
+    grid-template-columns:
+        1fr 1fr;
 
+    gap:13px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+label{
+    display:block;
+
+    color:#d8d4e4;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    margin-bottom:6px;
+}
+
+input{
+    width:100%;
+
+    padding:13px 14px;
+
+    border-radius:11px;
+
+    border:1px solid var(--border);
+
+    background:#100d1d;
+
+    color:white;
+
+    outline:none;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+input:focus{
+    border-color:var(--primary2);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(108,53,255,.12);
+}
+
+input[readonly]{
+    color:#aaa5b8;
+    cursor:not-allowed;
 }
 
 
-.warning {
+/* ================= BUTTON ================= */
 
-    color: #f5c451;
+.primary-btn{
+    width:100%;
 
-    font-size: 12px;
+    border:none;
 
-    margin-top: 8px;
+    margin-top:17px;
 
-}
+    padding:15px;
 
+    border-radius:13px;
 
-.error {
-
-    margin-top: 20px;
-
-    padding: 15px;
-
-    border-radius: 12px;
+    color:white;
 
     background:
-        rgba(255,80,80,.08);
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    font-size:14px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(108,53,255,.25);
+
+    transition:.2s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-1px);
+}
+
+
+/* ================= PROFILE MESSAGE ================= */
+
+.success-message{
+    display:none;
+
+    margin-top:12px;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:
+        rgba(63,209,139,.10);
+
+    border:1px solid
+        rgba(63,209,139,.20);
+
+    color:var(--green);
+
+    font-size:11px;
+
+    text-align:center;
+}
+
+
+/* ================= GAME TABS ================= */
+
+.game-tabs{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+}
+
+.game-tab{
+    padding:12px 5px;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.game-tab:hover{
+    border-color:var(--primary2);
+}
+
+.game-tab.active{
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    color:white;
+
+    border-color:transparent;
+
+    box-shadow:
+        0 8px 22px
+        rgba(108,53,255,.25);
+}
+
+
+/* ================= NUMBER PANEL ================= */
+
+.number-panel{
+    margin-top:18px;
+
+    padding:18px;
+
+    background:#100d1d;
+
+    border:1px solid var(--border);
+
+    border-radius:17px;
+}
+
+.number-heading{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+.number-heading strong{
+    font-size:13px;
+}
+
+.number-heading span{
+    font-size:10px;
+
+    color:var(--muted);
+}
+
+.number-row{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:10px;
+}
+
+.number-slot{
+    text-align:center;
+}
+
+.number-slot label{
+    margin-bottom:7px;
+
+    color:var(--muted);
+}
+
+select{
+    width:100%;
+
+    height:62px;
+
+    border-radius:15px;
+
+    border:2px solid #30294a;
+
+    background:
+        linear-gradient(
+            145deg,
+            #201a36,
+            #120f21
+        );
+
+    color:white;
+
+    text-align:center;
+
+    text-align-last:center;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    outline:none;
+
+    cursor:pointer;
+}
+
+select:focus{
+    border-color:var(--primary2);
+
+    box-shadow:
+        0 0 18px
+        rgba(108,53,255,.25);
+}
+
+.number-slot.disabled{
+    opacity:.25;
+
+    pointer-events:none;
+}
+
+
+/* ================= SUMMARY ================= */
+
+.summary-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:11px 0;
+
+    border-bottom:
+        1px solid var(--border);
+
+    font-size:12px;
+}
+
+.summary-row:last-child{
+    border-bottom:0;
+}
+
+.summary-row span{
+    color:var(--muted);
+}
+
+
+/* ================= BALLS ================= */
+
+.selected{
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin:16px 0;
+}
+
+.ball{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffd966,
+            #ffad20
+        );
+
+    color:#251634;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    box-shadow:
+        0 7px 18px
+        rgba(255,174,32,.18);
+}
+
+
+/* ================= DEMO POINTS ================= */
+
+.amount{
+    margin-top:15px;
+
+    padding:16px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,207,74,.07);
 
     border:
-        1px solid rgba(255,80,80,.25);
+        1px solid
+        rgba(255,207,74,.14);
+}
 
-    color: #ffaaaa;
+.amount small{
+    color:var(--muted);
+
+    display:block;
+
+    font-size:10px;
+}
+
+.amount strong{
+    display:block;
+
+    color:var(--gold);
+
+    font-size:27px;
+
+    margin-top:4px;
+}
+
+
+/* ================= ENTRY CARD ================= */
+
+.entry{
+    background:#100d1d;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    padding:15px;
+
+    margin-top:10px;
+}
+
+.entry-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.entry-id{
+    color:var(--gold);
+
+    font-size:10px;
+
+    font-weight:800;
+}
+
+.status{
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,207,74,.10);
+
+    color:var(--gold);
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+.entry-date{
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:8px;
+}
+
+.entry-number-row{
+    display:flex;
+
+    gap:7px;
+
+    margin-top:12px;
+}
+
+.small-ball{
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffd966,
+            #ffad20
+        );
+
+    color:#251634;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+
+/* ================= RESULT TABLE ================= */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+.result-table{
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:560px;
+}
+
+.result-table th{
+    color:var(--muted);
+
+    font-size:10px;
+
+    text-align:center;
+
+    padding:11px 8px;
+
+    background:#100d1d;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.result-table td{
+    text-align:center;
+
+    padding:13px 8px;
+
+    font-size:11px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.result-table td:first-child{
+    color:var(--gold);
+
+    font-weight:700;
+}
+
+.result-ball{
+    display:inline-flex;
+
+    width:30px;
+    height:30px;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffd966,
+            #ffad20
+        );
+
+    color:#251634;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+.no-data{
+    text-align:center;
+
+    padding:20px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+/* ================= DEMO NOTE ================= */
+
+.demo-note{
+    margin-top:12px;
+
+    color:#888298;
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer{
+    text-align:center;
+
+    color:#777186;
+
+    font-size:10px;
+
+    padding:15px;
+}
+
+
+/* ================= HIDDEN ================= */
+
+.hidden{
+    display:none;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:760px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        margin-top:20px;
+    }
+
+    .hero-box{
+        padding:22px;
+    }
+
+    .hero h2{
+        font-size:25px;
+    }
+}
+
+
+@media(max-width:480px){
+
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .number-row{
+        grid-template-columns:
+            repeat(4,1fr);
+
+        gap:6px;
+    }
+
+    select{
+        height:58px;
+
+        font-size:21px;
+    }
+
+    .number-slot label{
+        font-size:9px;
+    }
+
+    .card{
+        padding:16px;
+    }
+
+    .game-tab{
+        padding:11px 2px;
+
+        font-size:10px;
+    }
+
+    .brand h1{
+        font-size:16px;
+    }
+
+    .logout-btn{
+        padding:8px 10px;
+
+        font-size:9px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="topbar">
+
+    <div class="nav">
+
+        <div class="brand">
+
+            <div class="logo">
+                🎯
+            </div>
+
+            <div>
+
+                <h1>LuckyPick</h1>
+
+                <span>
+                    CUSTOMER DASHBOARD
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            LOGOUT
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-box">
+
+        <div class="badge">
+            ✨ DEMO EXPERIENCE
+        </div>
+
+        <h2>
+            Welcome, <span id="welcomeName">
+                Customer
+            </span>
+        </h2>
+
+        <p>
+            Manage your profile, select your numbers
+            and view date-wise demo results.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<main class="container">
+
+
+<div class="grid">
+
+
+<!-- ================= LEFT COLUMN ================= -->
+
+<div>
+
+
+<!-- ================= PROFILE ================= -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <div class="icon">
+            👤
+        </div>
+
+        <div>
+
+            <h3>
+                My Profile
+            </h3>
+
+            <p>
+                Manage your account details
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="profile-grid">
+
+
+        <div class="field">
+
+            <label>
+                FULL NAME
+            </label>
+
+            <input
+                id="profileName"
+                readonly>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                MOBILE NUMBER
+            </label>
+
+            <input
+                id="profileMobile"
+                readonly>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                REFERRAL CODE
+            </label>
+
+            <input
+                id="profileReferral"
+                readonly>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                EMAIL ID
+            </label>
+
+            <input
+                id="profileEmail"
+                placeholder="Enter email">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                UPI ID
+            </label>
+
+            <input
+                id="profileUPI"
+                placeholder="example@upi">
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                ACCOUNT NUMBER
+            </label>
+
+            <input
+                id="profileAccount"
+                placeholder="Enter account number">
+
+        </div>
+
+
+        <div class="field full">
+
+            <label>
+                IFSC CODE
+            </label>
+
+            <input
+                id="profileIFSC"
+                placeholder="Example: SBIN0000001">
+
+        </div>
+
+
+    </div>
+
+
+    <button
+        class="primary-btn"
+        onclick="saveProfile()">
+
+        SAVE PROFILE
+
+    </button>
+
+
+    <div
+        class="success-message"
+        id="profileMessage">
+
+        ✓ Profile details saved successfully.
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= NUMBER SELECTION ================= -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <div class="icon">
+            🎮
+        </div>
+
+        <div>
+
+            <h3>
+                Number Selection
+            </h3>
+
+            <p>
+                Choose your game type
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="game-tabs">
+
+
+        <div
+            class="game-tab active"
+            onclick="setGame(1,this)">
+
+            1 NUMBER
+
+        </div>
+
+
+        <div
+            class="game-tab"
+            onclick="setGame(2,this)">
+
+            2 NUMBERS
+
+        </div>
+
+
+        <div
+            class="game-tab"
+            onclick="setGame(3,this)">
+
+            3 NUMBERS
+
+        </div>
+
+
+        <div
+            class="game-tab"
+            onclick="setGame(4,this)">
+
+            4 NUMBERS
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="number-panel">
+
+
+        <div class="number-heading">
+
+            <strong>
+                Select Numbers
+            </strong>
+
+            <span>
+                1 — 9
+            </span>
+
+        </div>
+
+
+
+        <div class="number-row">
+
+
+            <div class="number-slot">
+
+                <label>
+                    BOX 01
+                </label>
+
+                <select id="n1">
+
+                    <option value="">
+                        —
+                    </option>
+
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="number-slot disabled">
+
+                <label>
+                    BOX 02
+                </label>
+
+                <select id="n2">
+
+                    <option value="">
+                        —
+                    </option>
+
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="number-slot disabled">
+
+                <label>
+                    BOX 03
+                </label>
+
+                <select id="n3">
+
+                    <option value="">
+                        —
+                    </option>
+
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="number-slot disabled">
+
+                <label>
+                    BOX 04
+                </label>
+
+                <select id="n4">
+
+                    <option value="">
+                        —
+                    </option>
+
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <button
+        class="primary-btn"
+        onclick="submitEntry()">
+
+        SUBMIT DEMO ENTRY ✓
+
+    </button>
+
+
+    <p class="demo-note">
+
+        Demo only. No real-money payment or
+        prize/payout is processed by this page.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- ================= MY ENTRIES ================= -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <div class="icon">
+            📋
+        </div>
+
+        <div>
+
+            <h3>
+                My Entries
+            </h3>
+
+            <p>
+                Your date-wise submitted entries
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div id="myEntries">
+
+        <div class="no-data">
+            No entries yet.
+        </div>
+
+    </div>
+
+
+</section>
+
+
+</div>
+
+
+
+<!-- ================= RIGHT COLUMN ================= -->
+
+<div>
+
+
+<!-- ================= QUICK SUMMARY ================= -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <div class="icon">
+            ⚡
+        </div>
+
+        <div>
+
+            <h3>
+                Quick Summary
+            </h3>
+
+            <p>
+                Your current selection
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="selected"
+        id="quickNumbers">
+
+        <span class="ball">
+            —
+        </span>
+
+    </div>
+
+
+    <div class="summary-row">
+
+        <span>
+            Game Type
+        </span>
+
+        <b id="quickGame">
+            1 Number
+        </b>
+
+    </div>
+
+
+    <div class="summary-row">
+
+        <span>
+            Demo Points
+        </span>
+
+        <b id="quickAmount">
+            50
+        </b>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= WINNING RESULTS ================= -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <div class="icon">
+            🏆
+        </div>
+
+        <div>
+
+            <h3>
+                Winning Results
+            </h3>
+
+            <p>
+                Date-wise demo results
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+
+        <table class="result-table">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        DATE
+                    </th>
+
+                    <th>
+                        BOX 01
+                    </th>
+
+                    <th>
+                        BOX 02
+                    </th>
+
+                    <th>
+                        BOX 03
+                    </th>
+
+                    <th>
+                        BOX 04
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="resultsBody">
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+    <p
+        class="demo-note">
+
+        Results shown here are demo results
+        published for demonstration purposes.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- ================= ACCOUNT INFO ================= -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <div class="icon">
+            🔐
+        </div>
+
+        <div>
+
+            <h3>
+                Account Information
+            </h3>
+
+            <p>
+                Your registered account
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="summary-row">
+
+        <span>
+            Customer Name
+        </span>
+
+        <b id="infoName">
+            —
+        </b>
+
+    </div>
+
+
+    <div class="summary-row">
+
+        <span>
+            Mobile
+        </span>
+
+        <b id="infoMobile">
+            —
+        </b>
+
+    </div>
+
+
+    <div class="summary-row">
+
+        <span>
+            Referral Code
+        </span>
+
+        <b id="infoReferral">
+            —
+        </b>
+
+    </div>
+
+
+    <div class="summary-row">
+
+        <span>
+            Account Status
+        </span>
+
+        <b style="color:#3fd18b">
+            ACTIVE
+        </b>
+
+    </div>
+
+
+</section>
+
+
+</div>
+
+</div>
+
+</main>
+
+
+
+<div class="footer">
+
+    LuckyPick • Customer Dashboard • Demo Version
+
+</div>
+
+
+
+<script>
+
+
+/* ================= GAME ================= */
+
+let gameCount = 1;
+
+
+const points = {
+
+    1:50,
+
+    2:150,
+
+    3:250,
+
+    4:350
+
+};
+
+
+
+/* ================= CURRENT CUSTOMER ================= */
+
+function getCurrentCustomer(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "loggedCustomer"
+        )
+    );
 
 }
 
 
-/* MOBILE */
 
-@media (max-width: 700px) {
+/* ================= LOAD CUSTOMER ================= */
 
-    .container {
+function loadCustomer(){
 
-        width: 94%;
-
-        padding-top: 25px;
-
-    }
+    const customer =
+        getCurrentCustomer();
 
 
-    .hero h1 {
+    if(!customer){
 
-        font-size: 36px;
+        window.location.href =
+            "index.html";
 
-    }
-
-
-    .card {
-
-        padding: 22px;
-
-        border-radius: 18px;
+        return;
 
     }
 
 
-    .form-grid {
+    document.getElementById(
+        "welcomeName"
+    ).innerText =
+        customer.name || "Customer";
 
-        grid-template-columns: 1fr;
 
-    }
+    document.getElementById(
+        "profileName"
+    ).value =
+        customer.name || "";
 
 
-    .field.full {
+    document.getElementById(
+        "profileMobile"
+    ).value =
+        customer.mobile || "";
 
-        grid-column: auto;
 
-    }
+    document.getElementById(
+        "profileReferral"
+    ).value =
+        customer.referral || "";
+
+
+    document.getElementById(
+        "profileEmail"
+    ).value =
+        customer.email || "";
+
+
+    document.getElementById(
+        "profileUPI"
+    ).value =
+        customer.upi || "";
+
+
+    document.getElementById(
+        "profileAccount"
+    ).value =
+        customer.account || "";
+
+
+    document.getElementById(
+        "profileIFSC"
+    ).value =
+        customer.ifsc || "";
+
+
+    document.getElementById(
+        "infoName"
+    ).innerText =
+        customer.name || "—";
+
+
+    document.getElementById(
+        "infoMobile"
+    ).innerText =
+        customer.mobile || "—";
+
+
+    document.getElementById(
+        "infoReferral"
+    ).innerText =
+        customer.referral || "—";
 
 }
+
+
+
+/* ================= SAVE PROFILE ================= */
+
+function saveProfile(){
+
+    const customer =
+        getCurrentCustomer();
+
+
+    if(!customer){
+
+        return;
+
+    }
+
+
+    customer.email =
+        document.getElementById(
+            "profileEmail"
+        ).value.trim();
+
+
+    customer.upi =
+        document.getElementById(
+            "profileUPI"
+        ).value.trim();
+
+
+    customer.account =
+        document.getElementById(
+            "profileAccount"
+        ).value.trim();
+
+
+    customer.ifsc =
+        document.getElementById(
+            "profileIFSC"
+        ).value.trim();
+
+
+    localStorage.setItem(
+        "loggedCustomer",
+        JSON.stringify(customer)
+    );
+
+
+    let customers =
+        JSON.parse(
+            localStorage.getItem(
+                "luckyPickCustomers"
+            )
+        ) || [];
+
+
+    customers =
+        customers.map(item => {
+
+            if(
+                item.mobile ===
+                customer.mobile
+            ){
+
+                return customer;
+
+            }
+
+            return item;
+
+        });
+
+
+    localStorage.setItem(
+        "luckyPickCustomers",
+        JSON.stringify(customers)
+    );
+
+
+    const message =
+        document.getElementById(
+            "profileMessage"
+        );
+
+
+    message.style.display =
+        "block";
+
+
+    setTimeout(() => {
+
+        message.style.display =
+            "none";
+
+    },3000);
+
+}
+
+
+
+/* ================= GAME TYPE ================= */
+
+function setGame(
+    count,
+    element
+){
+
+    gameCount = count;
+
+
+    document
+        .querySelectorAll(
+            ".game-tab"
+        )
+        .forEach(tab => {
+
+            tab.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    element.classList.add(
+        "active"
+    );
+
+
+    for(
+        let i=1;
+        i<=4;
+        i++
+    ){
+
+        const slot =
+            document.getElementById(
+                "n"+i
+            ).parentElement;
+
+
+        if(i <= count){
+
+            slot.classList.remove(
+                "disabled"
+            );
+
+        }
+        else{
+
+            slot.classList.add(
+                "disabled"
+            );
+
+            document.getElementById(
+                "n"+i
+            ).value="";
+
+        }
+
+    }
+
+
+    document.getElementById(
+        "quickGame"
+    ).innerText =
+        count +
+        (
+            count === 1
+            ? " Number"
+            : " Numbers"
+        );
+
+
+    document.getElementById(
+        "quickAmount"
+    ).innerText =
+        points[count];
+
+
+    updateQuickNumbers();
+
+}
+
+
+
+/* ================= QUICK NUMBERS ================= */
+
+function updateQuickNumbers(){
+
+    let html="";
+
+
+    for(
+        let i=1;
+        i<=gameCount;
+        i++
+    ){
+
+        const value =
+            document.getElementById(
+                "n"+i
+            ).value;
+
+
+        html +=
+            `<span class="ball">
+                ${value || "—"}
+             </span>`;
+
+    }
+
+
+    document.getElementById(
+        "quickNumbers"
+    ).innerHTML =
+        html;
+
+}
+
+
+
+document
+    .querySelectorAll("select")
+    .forEach(select => {
+
+        select.addEventListener(
+            "change",
+            updateQuickNumbers
+        );
+
+    });
+
+
+
+/* ================= SUBMIT ENTRY ================= */
+
+function submitEntry(){
+
+    const customer =
+        getCurrentCustomer();
+
+
+    if(!customer){
+
+        alert(
+            "Please login again."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    let numbers=[];
+
+
+    for(
+        let i=1;
+        i<=gameCount;
+        i++
+    ){
+
+        const value =
+            document.getElementById(
+                "n"+i
+            ).value;
+
+
+        if(!value){
+
+            alert(
+                "Please select all required numbers."
+            );
+
+            return;
+
+        }
+
+
+        numbers.push(value);
+
+    }
+
+
+
+    const entry={
+
+        id:
+            "LP-"+Date.now(),
+
+        mobile:
+            customer.mobile,
+
+        name:
+            customer.name,
+
+        game:
+            gameCount,
+
+        numbers:
+            numbers,
+
+        points:
+            points[gameCount],
+
+        status:
+            "Pending",
+
+        createdAt:
+            new Date().toLocaleString()
+
+    };
+
+
+
+    let entries =
+        JSON.parse(
+            localStorage.getItem(
+                "luckyPickEntries"
+            )
+        ) || [];
+
+
+    entries.push(entry);
+
+
+    localStorage.setItem(
+        "luckyPickEntries",
+        JSON.stringify(entries)
+    );
+
+
+
+    alert(
+        "Demo entry submitted successfully."
+    );
+
+
+    for(
+        let i=1;
+        i<=4;
+        i++
+    ){
+
+        document.getElementById(
+            "n"+i
+        ).value="";
+
+    }
+
+
+    updateQuickNumbers();
+
+    loadMyEntries();
+
+}
+
+
+
+/* ================= MY ENTRIES ================= */
+
+function loadMyEntries(){
+
+    const customer =
+        getCurrentCustomer();
+
+
+    if(!customer){
+
+        return;
+
+    }
+
+
+    const allEntries =
+        JSON.parse(
+            localStorage.getItem(
+                "luckyPickEntries"
+            )
+        ) || [];
+
+
+    const entries =
+        allEntries
+        .filter(
+            entry =>
+                entry.mobile ===
+                customer.mobile
+        )
+        .reverse();
+
+
+    const container =
+        document.getElementById(
+            "myEntries"
+        );
+
+
+    if(entries.length === 0){
+
+        container.innerHTML =
+            `<div class="no-data">
+                No entries yet.
+             </div>`;
+
+        return;
+
+    }
+
+
+    container.innerHTML="";
+
+
+    entries.forEach(entry => {
+
+
+        let numbersHTML="";
+
+
+        entry.numbers.forEach(
+            number => {
+
+                numbersHTML +=
+                    `<span class="small-ball">
+                        ${number}
+                     </span>`;
+
+            }
+        );
+
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+
+        div.className =
+            "entry";
+
+
+        div.innerHTML = `
+
+            <div class="entry-top">
+
+                <span class="entry-id">
+                    ${escapeHTML(entry.id)}
+                </span>
+
+                <span class="status">
+                    ${escapeHTML(entry.status)}
+                </span>
+
+            </div>
+
+
+            <div class="entry-date">
+
+                📅 ${escapeHTML(entry.createdAt)}
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Game
+                </span>
+
+                <b>
+                    ${entry.game}
+                    ${
+                        entry.game === 1
+                        ? " Number"
+                        : " Numbers"
+                    }
+                </b>
+
+            </div>
+
+
+            <div class="entry-number-row">
+
+                ${numbersHTML}
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Demo Points
+                </span>
+
+                <b>
+                    ${entry.points}
+                </b>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(
+            div
+        );
+
+    });
+
+}
+
+
+
+/* ================= WINNING RESULTS ================= */
+
+function loadResults(){
+
+    const results =
+        JSON.parse(
+            localStorage.getItem(
+                "luckyPickResults"
+            )
+        ) || [];
+
+
+    const body =
+        document.getElementById(
+            "resultsBody"
+        );
+
+
+    body.innerHTML="";
+
+
+    if(results.length === 0){
+
+        body.innerHTML = `
+
+            <tr>
+
+                <td colspan="5">
+
+                    <div class="no-data">
+
+                        No results published yet.
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    results
+        .slice()
+        .reverse()
+        .forEach(result => {
+
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            tr.innerHTML = `
+
+                <td>
+                    ${escapeHTML(
+                        result.date
+                    )}
+                </td>
+
+
+                <td>
+                    <span class="result-ball">
+                        ${result.box1}
+                    </span>
+                </td>
+
+
+                <td>
+                    <span class="result-ball">
+                        ${result.box2}
+                    </span>
+                </td>
+
+
+                <td>
+                    <span class="result-ball">
+                        ${result.box3}
+                    </span>
+                </td>
+
+
+                <td>
+                    <span class="result-ball">
+                        ${result.box4}
+                    </span>
+                </td>
+
+            `;
+
+
+            body.appendChild(
+                tr
+            );
+
+        });
+
+}
+
+
+
+/* ================= TEXT SAFETY ================= */
+
+function escapeHTML(text){
+
+    return String(text)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "loggedCustomer"
+    );
+
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+
+/* ================= START ================= */
+
+loadCustomer();
+
+setGame(
+    1,
+    document.querySelector(
+        ".game-tab"
+    )
+);
+
+loadMyEntries();
+
+loadResults();
+
+
+</script>
+
+
+</body>
+</html>
