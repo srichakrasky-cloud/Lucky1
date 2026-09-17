@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LuckyPick • Customer Dashboard</title>
+<title>LuckyPick • Dashboard</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -18,1015 +13,779 @@
 }
 
 :root{
-    --primary:#6c35ff;
-    --primary2:#9b5cff;
-    --gold:#ffcf4a;
-    --dark:#0d0b18;
-    --card:#171327;
-    --text:#ffffff;
-    --muted:#a9a4bb;
-    --border:rgba(255,255,255,.09);
-    --green:#3fd18b;
+    --primary:#7138ff;
+    --primary2:#a35cff;
+    --gold:#ffd34f;
+    --gold2:#ffb928;
+    --dark:#0b0815;
+    --card:#171126;
+    --card2:#1e1635;
+    --text:#fff;
+    --muted:#aaa3bd;
+    --border:rgba(255,255,255,.10);
+    --success:#42e695;
 }
 
 body{
-    font-family:Inter,Arial,sans-serif;
-    background:
-        radial-gradient(
-            circle at 15% 5%,
-            rgba(108,53,255,.28),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(255,207,74,.10),
-            transparent 25%
-        ),
-        #0d0b18;
-
+    font-family:Arial,Helvetica,sans-serif;
     color:var(--text);
+    background:
+        radial-gradient(circle at 15% 10%,rgba(113,56,255,.25),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(163,92,255,.18),transparent 30%),
+        linear-gradient(135deg,#0b0815,#120b22 55%,#090711);
     min-height:100vh;
 }
 
-
-/* ================= HEADER ================= */
+/* TOP BAR */
 
 .topbar{
     position:sticky;
     top:0;
-    z-index:20;
-
-    background:rgba(13,11,24,.88);
-    backdrop-filter:blur(16px);
-
+    z-index:100;
+    background:rgba(11,8,21,.90);
+    backdrop-filter:blur(15px);
     border-bottom:1px solid var(--border);
 }
 
-.nav{
+.topbar-inner{
     max-width:1000px;
     margin:auto;
-
-    padding:15px 18px;
-
+    min-height:70px;
+    padding:12px 18px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .brand{
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:10px;
 }
 
 .logo{
-    width:42px;
-    height:42px;
-
-    border-radius:13px;
-
+    width:43px;
+    height:43px;
+    border-radius:14px;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
-    box-shadow:
-        0 8px 25px
-        rgba(108,53,255,.35);
-
-    font-size:21px;
+    font-size:23px;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    box-shadow:0 8px 25px rgba(113,56,255,.35);
 }
 
-.brand h1{
-    font-size:18px;
+.brand-name{
+    font-size:20px;
     font-weight:800;
 }
 
-.brand span{
-    display:block;
-
-    color:var(--muted);
-
+.brand-sub{
     font-size:10px;
-
+    color:var(--gold);
+    letter-spacing:2px;
     margin-top:2px;
-
-    letter-spacing:1px;
 }
 
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
 
-/* ================= LOGOUT ================= */
+.profile-btn{
+    border:1px solid rgba(255,211,79,.35);
+    background:linear-gradient(135deg,#24183e,#191229);
+    color:#fff;
+    border-radius:13px;
+    padding:10px 13px;
+    cursor:pointer;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.profile-btn:hover{
+    border-color:var(--gold);
+    box-shadow:0 0 18px rgba(255,211,79,.15);
+}
 
 .logout-btn{
     border:1px solid var(--border);
-
-    background:#171327;
-
+    background:#191329;
     color:#fff;
-
-    padding:9px 13px;
-
-    border-radius:10px;
-
-    font-size:10px;
-
-    font-weight:700;
-
+    border-radius:12px;
+    padding:10px 13px;
     cursor:pointer;
 }
 
-.logout-btn:hover{
-    border-color:var(--primary2);
-}
-
-
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
     max-width:1000px;
-
-    margin:30px auto 15px;
-
+    margin:22px auto 18px;
     padding:0 18px;
 }
 
 .hero-box{
-    border:1px solid var(--border);
-
-    border-radius:25px;
-
-    padding:28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(108,53,255,.18),
-            rgba(255,255,255,.03)
-        );
-
     position:relative;
-
     overflow:hidden;
+    padding:28px;
+    border-radius:25px;
+    background:
+        radial-gradient(circle at 90% 10%,rgba(255,211,79,.20),transparent 25%),
+        linear-gradient(135deg,#5d28e8,#8e48f7 55%,#5421d4);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 20px 50px rgba(0,0,0,.30);
 }
 
 .hero-box:after{
     content:"";
-
     position:absolute;
-
-    width:180px;
-    height:180px;
-
+    width:170px;
+    height:170px;
     border-radius:50%;
-
-    background:
-        rgba(255,207,74,.08);
-
-    right:-60px;
-    top:-70px;
+    right:-55px;
+    bottom:-80px;
+    border:25px solid rgba(255,255,255,.08);
 }
 
 .badge{
     display:inline-block;
-
-    background:
-        rgba(255,207,74,.12);
-
-    color:var(--gold);
-
-    padding:7px 11px;
-
+    padding:7px 12px;
     border-radius:30px;
-
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.16);
     font-size:11px;
-
-    font-weight:700;
-
-    margin-bottom:12px;
+    letter-spacing:1px;
+    margin-bottom:13px;
 }
 
-.hero h2{
-    font-size:30px;
-
+.hero h1{
+    font-size:32px;
     line-height:1.15;
+    margin-bottom:8px;
 }
 
 .hero p{
-    color:var(--muted);
-
-    margin-top:9px;
-
+    color:#e9e1ff;
     font-size:14px;
 }
 
-
-/* ================= MAIN ================= */
+/* MAIN */
 
 .container{
     max-width:1000px;
-
     margin:auto;
-
-    padding:15px 18px 50px;
+    padding:0 18px 40px;
 }
 
 .grid{
     display:grid;
-
-    grid-template-columns:
-        1.35fr .8fr;
-
+    grid-template-columns:1.35fr .8fr;
     gap:18px;
 }
 
-
-/* ================= CARD ================= */
-
 .card{
     background:
-        rgba(23,19,39,.88);
-
+        linear-gradient(145deg,rgba(30,22,53,.96),rgba(19,14,35,.96));
     border:1px solid var(--border);
-
-    border-radius:22px;
-
-    padding:22px;
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.18);
-
+    border-radius:21px;
+    padding:20px;
+    box-shadow:0 12px 35px rgba(0,0,0,.22);
     margin-bottom:18px;
 }
 
 .card-title{
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
-    margin-bottom:18px;
+    margin-bottom:17px;
 }
 
-.card-title .icon{
-    width:35px;
-    height:35px;
-
-    border-radius:10px;
-
-    background:
-        rgba(108,53,255,.16);
-
+.card-icon{
+    width:38px;
+    height:38px;
+    border-radius:11px;
     display:flex;
-
     align-items:center;
     justify-content:center;
+    background:rgba(113,56,255,.16);
+    border:1px solid rgba(163,92,255,.20);
+    font-size:19px;
 }
 
-.card-title h3{
+.card-title h2{
     font-size:17px;
 }
 
 .card-title p{
     font-size:11px;
-
     color:var(--muted);
-
     margin-top:3px;
 }
 
+/* GAME TABS */
 
-/* ================= PROFILE ================= */
-
-.profile-grid{
+.tabs{
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:13px;
-}
-
-.field.full{
-    grid-column:1/-1;
-}
-
-label{
-    display:block;
-
-    color:#d8d4e4;
-
-    font-size:11px;
-
-    font-weight:600;
-
-    margin-bottom:6px;
-}
-
-input{
-    width:100%;
-
-    padding:13px 14px;
-
-    border-radius:11px;
-
-    border:1px solid var(--border);
-
-    background:#100d1d;
-
-    color:white;
-
-    outline:none;
-
-    font-size:13px;
-
-    transition:.2s;
-}
-
-input:focus{
-    border-color:var(--primary2);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(108,53,255,.12);
-}
-
-input[readonly]{
-    color:#aaa5b8;
-    cursor:not-allowed;
-}
-
-
-/* ================= BUTTON ================= */
-
-.primary-btn{
-    width:100%;
-
-    border:none;
-
-    margin-top:17px;
-
-    padding:15px;
-
-    border-radius:13px;
-
-    color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
-    font-size:14px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 10px 25px
-        rgba(108,53,255,.25);
-
-    transition:.2s;
-}
-
-.primary-btn:hover{
-    transform:translateY(-1px);
-}
-
-
-/* ================= PROFILE MESSAGE ================= */
-
-.success-message{
-    display:none;
-
-    margin-top:12px;
-
-    padding:11px;
-
-    border-radius:10px;
-
-    background:
-        rgba(63,209,139,.10);
-
-    border:1px solid
-        rgba(63,209,139,.20);
-
-    color:var(--green);
-
-    font-size:11px;
-
-    text-align:center;
-}
-
-
-/* ================= GAME TABS ================= */
-
-.game-tabs{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:8px;
+    margin-bottom:18px;
 }
 
-.game-tab{
-    padding:12px 5px;
-
-    text-align:center;
-
-    border:1px solid var(--border);
-
+.tab{
+    padding:11px 5px;
     border-radius:12px;
-
-    color:var(--muted);
-
-    cursor:pointer;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.game-tab:hover{
-    border-color:var(--primary2);
-}
-
-.game-tab.active{
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
-    color:white;
-
-    border-color:transparent;
-
-    box-shadow:
-        0 8px 22px
-        rgba(108,53,255,.25);
-}
-
-
-/* ================= NUMBER PANEL ================= */
-
-.number-panel{
-    margin-top:18px;
-
-    padding:18px;
-
-    background:#100d1d;
-
     border:1px solid var(--border);
-
-    border-radius:17px;
+    background:#100c1d;
+    color:#aaa4ba;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:800;
+    text-align:center;
 }
 
-.number-heading{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:15px;
+.tab.active{
+    color:#fff;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    border-color:transparent;
+    box-shadow:0 8px 20px rgba(113,56,255,.30);
 }
 
-.number-heading strong{
-    font-size:13px;
-}
+/* NUMBER AREA */
 
-.number-heading span{
-    font-size:10px;
-
+.number-label{
     color:var(--muted);
+    font-size:12px;
+    margin-bottom:10px;
 }
 
-.number-row{
+.number-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:10px;
 }
 
-.number-slot{
-    text-align:center;
-}
-
-.number-slot label{
-    margin-bottom:7px;
-
-    color:var(--muted);
-}
-
-select{
-    width:100%;
-
-    height:62px;
-
-    border-radius:15px;
-
-    border:2px solid #30294a;
-
+.number-box{
     background:
-        linear-gradient(
-            145deg,
-            #201a36,
-            #120f21
-        );
-
-    color:white;
-
+        linear-gradient(145deg,#21183b,#130e24);
+    border:1px solid rgba(163,92,255,.20);
+    border-radius:17px;
+    padding:12px 8px;
     text-align:center;
+    transition:.2s;
+}
 
-    text-align-last:center;
+.number-box:hover{
+    transform:translateY(-2px);
+    border-color:var(--primary2);
+}
 
-    font-size:24px;
-
+.box-name{
+    font-size:10px;
+    color:var(--gold);
     font-weight:800;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
 
+.number-box select{
+    width:100%;
+    height:55px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.12);
+    background:#0d0918;
+    color:#fff;
+    text-align:center;
+    font-size:22px;
+    font-weight:900;
     outline:none;
-
     cursor:pointer;
 }
 
-select:focus{
-    border-color:var(--primary2);
-
-    box-shadow:
-        0 0 18px
-        rgba(108,53,255,.25);
+.number-box select:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 15px rgba(255,211,79,.15);
 }
 
-.number-slot.disabled{
-    opacity:.25;
+/* BUTTON */
 
-    pointer-events:none;
+.continue-btn{
+    width:100%;
+    margin-top:17px;
+    height:52px;
+    border:0;
+    border-radius:15px;
+    cursor:pointer;
+    color:#17100a;
+    font-weight:900;
+    font-size:14px;
+    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    box-shadow:0 10px 25px rgba(255,190,40,.18);
 }
 
+.continue-btn:hover{
+    transform:translateY(-1px);
+}
 
-/* ================= SUMMARY ================= */
+/* SUMMARY */
 
-.summary-row{
+.summary-list{
+    display:grid;
+    gap:10px;
+}
+
+.summary-item{
     display:flex;
-
+    align-items:center;
     justify-content:space-between;
+    padding:12px;
+    border-radius:13px;
+    background:#100c1d;
+    border:1px solid var(--border);
+}
 
-    padding:11px 0;
-
-    border-bottom:
-        1px solid var(--border);
-
+.summary-item span:first-child{
+    color:var(--muted);
     font-size:12px;
 }
 
-.summary-row:last-child{
-    border-bottom:0;
+.summary-item strong{
+    font-size:13px;
 }
 
-.summary-row span{
-    color:var(--muted);
+.demo-points{
+    color:var(--gold);
+    font-size:16px!important;
 }
 
+/* BALLS */
 
-/* ================= BALLS ================= */
-
-.selected{
+.balls{
     display:flex;
-
-    justify-content:center;
-
-    gap:8px;
-
-    margin:16px 0;
+    gap:7px;
+    flex-wrap:wrap;
 }
 
 .ball{
-    width:45px;
-    height:45px;
-
+    width:38px;
+    height:38px;
     border-radius:50%;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffd966,
-            #ffad20
-        );
-
-    color:#251634;
-
-    font-size:18px;
-
-    font-weight:800;
-
-    box-shadow:
-        0 7px 18px
-        rgba(255,174,32,.18);
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    font-weight:900;
+    box-shadow:0 6px 15px rgba(113,56,255,.25);
 }
 
-
-/* ================= DEMO POINTS ================= */
-
-.amount{
-    margin-top:15px;
-
-    padding:16px;
-
-    text-align:center;
-
-    border-radius:15px;
-
-    background:
-        rgba(255,207,74,.07);
-
-    border:
-        1px solid
-        rgba(255,207,74,.14);
-}
-
-.amount small{
-    color:var(--muted);
-
-    display:block;
-
-    font-size:10px;
-}
-
-.amount strong{
-    display:block;
-
-    color:var(--gold);
-
-    font-size:27px;
-
-    margin-top:4px;
-}
-
-
-/* ================= ENTRY CARD ================= */
+/* ENTRIES */
 
 .entry{
-    background:#100d1d;
-
+    background:#100c1d;
     border:1px solid var(--border);
-
-    border-radius:15px;
-
-    padding:15px;
-
-    margin-top:10px;
+    border-radius:14px;
+    padding:13px;
+    margin-bottom:10px;
 }
 
 .entry-top{
     display:flex;
-
     justify-content:space-between;
-
-    align-items:center;
-
     gap:10px;
+    margin-bottom:9px;
 }
 
 .entry-id{
-    color:var(--gold);
-
-    font-size:10px;
-
-    font-weight:800;
+    font-size:11px;
+    color:var(--muted);
 }
 
 .status{
-    padding:5px 9px;
-
-    border-radius:20px;
-
-    background:
-        rgba(255,207,74,.10);
-
-    color:var(--gold);
-
-    font-size:9px;
-
-    font-weight:800;
-}
-
-.entry-date{
-    color:var(--muted);
-
     font-size:10px;
-
-    margin-top:8px;
+    font-weight:800;
+    padding:5px 8px;
+    border-radius:20px;
+    background:rgba(66,230,149,.12);
+    color:var(--success);
 }
 
-.entry-number-row{
+.entry-numbers{
     display:flex;
-
-    gap:7px;
-
-    margin-top:12px;
+    gap:6px;
 }
 
 .small-ball{
-    width:32px;
-    height:32px;
-
+    width:31px;
+    height:31px;
     border-radius:50%;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffd966,
-            #ffad20
-        );
-
-    color:#251634;
-
-    font-size:13px;
-
-    font-weight:800;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    font-size:12px;
+    font-weight:900;
 }
 
-
-/* ================= RESULT TABLE ================= */
-
-.table-wrap{
-    overflow-x:auto;
-}
+/* RESULTS */
 
 .result-table{
     width:100%;
-
     border-collapse:collapse;
-
-    min-width:560px;
+    overflow:hidden;
+    border-radius:13px;
 }
 
 .result-table th{
-    color:var(--muted);
-
+    background:#24183f;
+    color:var(--gold);
     font-size:10px;
-
-    text-align:center;
-
-    padding:11px 8px;
-
-    background:#100d1d;
-
-    border-bottom:
-        1px solid var(--border);
+    letter-spacing:.5px;
+    padding:11px 6px;
 }
 
 .result-table td{
     text-align:center;
-
-    padding:13px 8px;
-
-    font-size:11px;
-
-    border-bottom:
-        1px solid var(--border);
+    padding:11px 5px;
+    border-bottom:1px solid var(--border);
+    font-size:12px;
 }
 
-.result-table td:first-child{
-    color:var(--gold);
-
-    font-weight:700;
-}
-
-.result-ball{
+.result-num{
     display:inline-flex;
-
     width:30px;
     height:30px;
-
     align-items:center;
     justify-content:center;
-
     border-radius:50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffd966,
-            #ffad20
-        );
-
-    color:#251634;
-
-    font-size:12px;
-
-    font-weight:800;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    font-weight:900;
 }
 
-.no-data{
+/* EMPTY */
+
+.empty{
     text-align:center;
-
-    padding:20px;
-
+    padding:22px 10px;
     color:var(--muted);
-
-    font-size:11px;
+    font-size:12px;
 }
 
+/* PROFILE MODAL */
 
-/* ================= DEMO NOTE ================= */
-
-.demo-note{
-    margin-top:12px;
-
-    color:#888298;
-
-    font-size:10px;
-
-    line-height:1.5;
-}
-
-
-/* ================= FOOTER ================= */
-
-.footer{
-    text-align:center;
-
-    color:#777186;
-
-    font-size:10px;
-
-    padding:15px;
-}
-
-
-/* ================= HIDDEN ================= */
-
-.hidden{
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    background:rgba(0,0,0,.68);
+    backdrop-filter:blur(7px);
     display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
 }
 
+.modal.show{
+    display:flex;
+}
 
-/* ================= MOBILE ================= */
+.profile-panel{
+    width:100%;
+    max-width:430px;
+    max-height:90vh;
+    overflow:auto;
+    background:
+        radial-gradient(circle at top right,rgba(163,92,255,.18),transparent 30%),
+        linear-gradient(145deg,#1d1533,#100c1d);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:24px;
+    padding:20px;
+    box-shadow:0 25px 80px rgba(0,0,0,.55);
+}
+
+.profile-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.profile-head h2{
+    font-size:20px;
+}
+
+.close-btn{
+    width:35px;
+    height:35px;
+    border-radius:11px;
+    border:1px solid var(--border);
+    background:#171125;
+    color:#fff;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.profile-field{
+    margin-bottom:12px;
+}
+
+.profile-field label{
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.profile-field input{
+    width:100%;
+    height:44px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:#0d0918;
+    color:#fff;
+    padding:0 12px;
+    outline:none;
+}
+
+.profile-field input:focus{
+    border-color:var(--primary2);
+}
+
+.save-profile{
+    width:100%;
+    height:48px;
+    margin-top:5px;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    color:#17100a;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:22px;
+    transform:translate(-50%,120px);
+    background:#24183d;
+    border:1px solid rgba(255,211,79,.25);
+    padding:12px 17px;
+    border-radius:13px;
+    font-size:12px;
+    z-index:1000;
+    transition:.3s;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.toast.show{
+    transform:translate(-50%,0);
+}
+
+/* MOBILE */
 
 @media(max-width:760px){
 
-    .grid{
-        grid-template-columns:1fr;
+    .topbar-inner{
+        padding:10px 12px;
+        min-height:62px;
+    }
+
+    .brand-name{
+        font-size:17px;
+    }
+
+    .brand-sub{
+        font-size:8px;
+    }
+
+    .logo{
+        width:39px;
+        height:39px;
+        font-size:20px;
+    }
+
+    .profile-btn{
+        padding:9px 10px;
+        font-size:11px;
+    }
+
+    .logout-btn{
+        padding:9px 10px;
+        font-size:11px;
     }
 
     .hero{
-        margin-top:20px;
+        margin-top:13px;
+        padding:0 12px;
     }
 
     .hero-box{
-        padding:22px;
+        padding:22px 18px;
+        border-radius:20px;
     }
 
-    .hero h2{
+    .hero h1{
         font-size:25px;
     }
-}
 
+    .hero p{
+        font-size:12px;
+        line-height:1.5;
+    }
 
-@media(max-width:480px){
+    .container{
+        padding:0 12px 30px;
+    }
 
-    .profile-grid{
+    .grid{
         grid-template-columns:1fr;
-    }
-
-    .field.full{
-        grid-column:auto;
-    }
-
-    .number-row{
-        grid-template-columns:
-            repeat(4,1fr);
-
-        gap:6px;
-    }
-
-    select{
-        height:58px;
-
-        font-size:21px;
-    }
-
-    .number-slot label{
-        font-size:9px;
+        gap:0;
     }
 
     .card{
         padding:16px;
+        border-radius:18px;
+        margin-bottom:13px;
     }
 
-    .game-tab{
-        padding:11px 2px;
-
-        font-size:10px;
+    .card-title{
+        margin-bottom:14px;
     }
 
-    .brand h1{
-        font-size:16px;
+    .card-title h2{
+        font-size:15px;
     }
 
-    .logout-btn{
-        padding:8px 10px;
+    .tabs{
+        gap:6px;
+    }
 
+    .tab{
         font-size:9px;
+        padding:10px 2px;
+    }
+
+    .number-grid{
+        gap:6px;
+    }
+
+    .number-box{
+        padding:9px 5px;
+        border-radius:13px;
+    }
+
+    .box-name{
+        font-size:8px;
+    }
+
+    .number-box select{
+        height:51px;
+        font-size:20px;
+        border-radius:11px;
+    }
+
+    .continue-btn{
+        height:50px;
+    }
+
+    .result-table th{
+        font-size:8px;
+        padding:9px 3px;
+    }
+
+    .result-table td{
+        font-size:10px;
+        padding:9px 2px;
+    }
+
+    .result-num{
+        width:27px;
+        height:27px;
+        font-size:11px;
     }
 }
 
+@media(max-width:390px){
+
+    .brand-sub{
+        display:none;
+    }
+
+    .profile-btn{
+        padding:8px;
+    }
+
+    .profile-btn span{
+        display:none;
+    }
+
+    .logout-btn{
+        padding:8px;
+    }
+
+    .hero h1{
+        font-size:23px;
+    }
+
+    .number-box select{
+        height:48px;
+        font-size:18px;
+    }
+}
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- ================= HEADER ================= -->
+<!-- TOP BAR -->
 
 <header class="topbar">
-
-    <div class="nav">
+    <div class="topbar-inner">
 
         <div class="brand">
-
-            <div class="logo">
-                🎯
-            </div>
+            <div class="logo">🎯</div>
 
             <div>
-
-                <h1>LuckyPick</h1>
-
-                <span>
-                    CUSTOMER DASHBOARD
-                </span>
-
+                <div class="brand-name">LuckyPick</div>
+                <div class="brand-sub">NUMBER DEMO</div>
             </div>
+        </div>
+
+        <div class="top-actions">
+
+            <button class="profile-btn" onclick="openProfile()">
+                👤 <span>Profile</span>
+            </button>
+
+            <button class="logout-btn" onclick="logout()">
+                Logout
+            </button>
 
         </div>
 
-
-        <button
-            class="logout-btn"
-            onclick="logout()">
-
-            LOGOUT
-
-        </button>
-
     </div>
-
 </header>
 
 
-
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
     <div class="hero-box">
 
-        <div class="badge">
-            ✨ DEMO EXPERIENCE
-        </div>
+        <div class="badge">✨ DEMO EXPERIENCE</div>
 
-        <h2>
-            Welcome, <span id="welcomeName">
-                Customer
-            </span>
-        </h2>
+        <h1 id="welcomeTitle">
+            Choose Your Numbers
+        </h1>
 
         <p>
-            Manage your profile, select your numbers
-            and view date-wise demo results.
+            Select your preferred number combination from 1 to 9.
         </p>
 
     </div>
@@ -1034,978 +793,525 @@ select:focus{
 </section>
 
 
+<!-- MAIN -->
 
 <main class="container">
 
+    <div class="grid">
 
-<div class="grid">
-
-
-<!-- ================= LEFT COLUMN ================= -->
-
-<div>
-
-
-<!-- ================= PROFILE ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-
-        <div class="icon">
-            👤
-        </div>
+        <!-- LEFT -->
 
         <div>
 
-            <h3>
-                My Profile
-            </h3>
+            <!-- NUMBER SELECTION -->
 
-            <p>
-                Manage your account details
-            </p>
+            <section class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">🎮</div>
+
+                    <div>
+                        <h2>Number Selection</h2>
+                        <p>Choose your game and numbers</p>
+                    </div>
+
+                </div>
+
+
+                <div class="tabs">
+
+                    <button class="tab active" onclick="setGame(1,this)">
+                        1 NUMBER
+                    </button>
+
+                    <button class="tab" onclick="setGame(2,this)">
+                        2 NUMBERS
+                    </button>
+
+                    <button class="tab" onclick="setGame(3,this)">
+                        3 NUMBERS
+                    </button>
+
+                    <button class="tab" onclick="setGame(4,this)">
+                        4 NUMBERS
+                    </button>
+
+                </div>
+
+
+                <div class="number-label">
+                    Select numbers for each box
+                </div>
+
+
+                <div class="number-grid">
+
+                    <div class="number-box">
+                        <div class="box-name">BOX 01</div>
+
+                        <select id="n1">
+                            <option value="">-</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                        </select>
+                    </div>
+
+
+                    <div class="number-box">
+                        <div class="box-name">BOX 02</div>
+
+                        <select id="n2" disabled>
+                            <option value="">-</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                        </select>
+                    </div>
+
+
+                    <div class="number-box">
+                        <div class="box-name">BOX 03</div>
+
+                        <select id="n3" disabled>
+                            <option value="">-</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                        </select>
+                    </div>
+
+
+                    <div class="number-box">
+                        <div class="box-name">BOX 04</div>
+
+                        <select id="n4" disabled>
+                            <option value="">-</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <button class="continue-btn" onclick="submitEntry()">
+                    CONTINUE →
+                </button>
+
+            </section>
+
+
+            <!-- MY ENTRIES -->
+
+            <section class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">📋</div>
+
+                    <div>
+                        <h2>My Entries</h2>
+                        <p>Your submitted demo entries</p>
+                    </div>
+
+                </div>
+
+                <div id="myEntries">
+                    <div class="empty">
+                        No entries yet.
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- WINNING RESULTS -->
+
+            <section class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">🏆</div>
+
+                    <div>
+                        <h2>Date-wise Winning Results</h2>
+                        <p>Published demo results</p>
+                    </div>
+
+                </div>
+
+
+                <div style="overflow-x:auto">
+
+                    <table class="result-table">
+
+                        <thead>
+                            <tr>
+                                <th>DATE</th>
+                                <th>BOX 01</th>
+                                <th>BOX 02</th>
+                                <th>BOX 03</th>
+                                <th>BOX 04</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="resultBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
 
         </div>
 
-    </div>
 
-
-    <div class="profile-grid">
-
-
-        <div class="field">
-
-            <label>
-                FULL NAME
-            </label>
-
-            <input
-                id="profileName"
-                readonly>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                MOBILE NUMBER
-            </label>
-
-            <input
-                id="profileMobile"
-                readonly>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                REFERRAL CODE
-            </label>
-
-            <input
-                id="profileReferral"
-                readonly>
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                EMAIL ID
-            </label>
-
-            <input
-                id="profileEmail"
-                placeholder="Enter email">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                UPI ID
-            </label>
-
-            <input
-                id="profileUPI"
-                placeholder="example@upi">
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                ACCOUNT NUMBER
-            </label>
-
-            <input
-                id="profileAccount"
-                placeholder="Enter account number">
-
-        </div>
-
-
-        <div class="field full">
-
-            <label>
-                IFSC CODE
-            </label>
-
-            <input
-                id="profileIFSC"
-                placeholder="Example: SBIN0000001">
-
-        </div>
-
-
-    </div>
-
-
-    <button
-        class="primary-btn"
-        onclick="saveProfile()">
-
-        SAVE PROFILE
-
-    </button>
-
-
-    <div
-        class="success-message"
-        id="profileMessage">
-
-        ✓ Profile details saved successfully.
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================= NUMBER SELECTION ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-
-        <div class="icon">
-            🎮
-        </div>
+        <!-- RIGHT -->
 
         <div>
 
-            <h3>
-                Number Selection
-            </h3>
+            <!-- QUICK SUMMARY -->
 
-            <p>
-                Choose your game type
-            </p>
+            <section class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">⚡</div>
+
+                    <div>
+                        <h2>Quick Summary</h2>
+                        <p>Your current selection</p>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-list">
+
+                    <div class="summary-item">
+
+                        <span>Selected Numbers</span>
+
+                        <div class="balls" id="quickNumbers">
+                            <span style="color:#aaa;font-size:12px">
+                                None
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>Game Type</span>
+
+                        <strong id="quickGame">
+                            1 Number
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>Demo Points</span>
+
+                        <strong class="demo-points" id="quickPoints">
+                            50
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CUSTOMER INFO -->
+
+            <section class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">👤</div>
+
+                    <div>
+                        <h2>Customer</h2>
+                        <p>Logged-in account</p>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-list">
+
+                    <div class="summary-item">
+                        <span>Name</span>
+                        <strong id="customerName">-</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Mobile</span>
+                        <strong id="customerMobile">-</strong>
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
 
     </div>
-
-
-
-    <div class="game-tabs">
-
-
-        <div
-            class="game-tab active"
-            onclick="setGame(1,this)">
-
-            1 NUMBER
-
-        </div>
-
-
-        <div
-            class="game-tab"
-            onclick="setGame(2,this)">
-
-            2 NUMBERS
-
-        </div>
-
-
-        <div
-            class="game-tab"
-            onclick="setGame(3,this)">
-
-            3 NUMBERS
-
-        </div>
-
-
-        <div
-            class="game-tab"
-            onclick="setGame(4,this)">
-
-            4 NUMBERS
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="number-panel">
-
-
-        <div class="number-heading">
-
-            <strong>
-                Select Numbers
-            </strong>
-
-            <span>
-                1 — 9
-            </span>
-
-        </div>
-
-
-
-        <div class="number-row">
-
-
-            <div class="number-slot">
-
-                <label>
-                    BOX 01
-                </label>
-
-                <select id="n1">
-
-                    <option value="">
-                        —
-                    </option>
-
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-
-                </select>
-
-            </div>
-
-
-
-            <div class="number-slot disabled">
-
-                <label>
-                    BOX 02
-                </label>
-
-                <select id="n2">
-
-                    <option value="">
-                        —
-                    </option>
-
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-
-                </select>
-
-            </div>
-
-
-
-            <div class="number-slot disabled">
-
-                <label>
-                    BOX 03
-                </label>
-
-                <select id="n3">
-
-                    <option value="">
-                        —
-                    </option>
-
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-
-                </select>
-
-            </div>
-
-
-
-            <div class="number-slot disabled">
-
-                <label>
-                    BOX 04
-                </label>
-
-                <select id="n4">
-
-                    <option value="">
-                        —
-                    </option>
-
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-
-                </select>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-
-    <button
-        class="primary-btn"
-        onclick="submitEntry()">
-
-        SUBMIT DEMO ENTRY ✓
-
-    </button>
-
-
-    <p class="demo-note">
-
-        Demo only. No real-money payment or
-        prize/payout is processed by this page.
-
-    </p>
-
-
-</section>
-
-
-
-<!-- ================= MY ENTRIES ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-
-        <div class="icon">
-            📋
-        </div>
-
-        <div>
-
-            <h3>
-                My Entries
-            </h3>
-
-            <p>
-                Your date-wise submitted entries
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div id="myEntries">
-
-        <div class="no-data">
-            No entries yet.
-        </div>
-
-    </div>
-
-
-</section>
-
-
-</div>
-
-
-
-<!-- ================= RIGHT COLUMN ================= -->
-
-<div>
-
-
-<!-- ================= QUICK SUMMARY ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-
-        <div class="icon">
-            ⚡
-        </div>
-
-        <div>
-
-            <h3>
-                Quick Summary
-            </h3>
-
-            <p>
-                Your current selection
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div
-        class="selected"
-        id="quickNumbers">
-
-        <span class="ball">
-            —
-        </span>
-
-    </div>
-
-
-    <div class="summary-row">
-
-        <span>
-            Game Type
-        </span>
-
-        <b id="quickGame">
-            1 Number
-        </b>
-
-    </div>
-
-
-    <div class="summary-row">
-
-        <span>
-            Demo Points
-        </span>
-
-        <b id="quickAmount">
-            50
-        </b>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================= WINNING RESULTS ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-
-        <div class="icon">
-            🏆
-        </div>
-
-        <div>
-
-            <h3>
-                Winning Results
-            </h3>
-
-            <p>
-                Date-wise demo results
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="table-wrap">
-
-
-        <table class="result-table">
-
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        DATE
-                    </th>
-
-                    <th>
-                        BOX 01
-                    </th>
-
-                    <th>
-                        BOX 02
-                    </th>
-
-                    <th>
-                        BOX 03
-                    </th>
-
-                    <th>
-                        BOX 04
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody id="resultsBody">
-
-            </tbody>
-
-
-        </table>
-
-
-    </div>
-
-
-    <p
-        class="demo-note">
-
-        Results shown here are demo results
-        published for demonstration purposes.
-
-    </p>
-
-
-</section>
-
-
-
-<!-- ================= ACCOUNT INFO ================= -->
-
-<section class="card">
-
-    <div class="card-title">
-
-        <div class="icon">
-            🔐
-        </div>
-
-        <div>
-
-            <h3>
-                Account Information
-            </h3>
-
-            <p>
-                Your registered account
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="summary-row">
-
-        <span>
-            Customer Name
-        </span>
-
-        <b id="infoName">
-            —
-        </b>
-
-    </div>
-
-
-    <div class="summary-row">
-
-        <span>
-            Mobile
-        </span>
-
-        <b id="infoMobile">
-            —
-        </b>
-
-    </div>
-
-
-    <div class="summary-row">
-
-        <span>
-            Referral Code
-        </span>
-
-        <b id="infoReferral">
-            —
-        </b>
-
-    </div>
-
-
-    <div class="summary-row">
-
-        <span>
-            Account Status
-        </span>
-
-        <b style="color:#3fd18b">
-            ACTIVE
-        </b>
-
-    </div>
-
-
-</section>
-
-
-</div>
-
-</div>
 
 </main>
 
 
+<!-- PROFILE MODAL -->
 
-<div class="footer">
+<div class="modal" id="profileModal">
 
-    LuckyPick • Customer Dashboard • Demo Version
+    <div class="profile-panel">
+
+        <div class="profile-head">
+
+            <div>
+                <h2>👤 My Profile</h2>
+                <p style="color:#aaa3bd;font-size:11px;margin-top:4px">
+                    Update your account details
+                </p>
+            </div>
+
+            <button class="close-btn" onclick="closeProfile()">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="profile-field">
+
+            <label>FULL NAME</label>
+
+            <input
+                id="profileName"
+                type="text"
+                readonly
+            >
+
+        </div>
+
+
+        <div class="profile-field">
+
+            <label>MOBILE NUMBER</label>
+
+            <input
+                id="profileMobile"
+                type="text"
+                readonly
+            >
+
+        </div>
+
+
+        <div class="profile-field">
+
+            <label>REFERRAL CODE</label>
+
+            <input
+                id="profileReferral"
+                type="text"
+                readonly
+            >
+
+        </div>
+
+
+        <div class="profile-field">
+
+            <label>EMAIL ID</label>
+
+            <input
+                id="profileEmail"
+                type="email"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="profile-field">
+
+            <label>UPI ID</label>
+
+            <input
+                id="profileUPI"
+                type="text"
+                placeholder="Enter UPI ID"
+            >
+
+        </div>
+
+
+        <div class="profile-field">
+
+            <label>ACCOUNT NUMBER</label>
+
+            <input
+                id="profileAccount"
+                type="text"
+                placeholder="Enter account number"
+            >
+
+        </div>
+
+
+        <div class="profile-field">
+
+            <label>IFSC CODE</label>
+
+            <input
+                id="profileIFSC"
+                type="text"
+                placeholder="Enter IFSC code"
+            >
+
+        </div>
+
+
+        <button
+            class="save-profile"
+            onclick="saveProfile()"
+        >
+            SAVE PROFILE
+        </button>
+
+    </div>
 
 </div>
 
 
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+    Profile saved successfully
+</div>
+
 
 <script>
 
-
-/* ================= GAME ================= */
+/* =========================
+   GAME SETTINGS
+========================= */
 
 let gameCount = 1;
 
-
 const points = {
-
     1:50,
-
     2:150,
-
     3:250,
-
     4:350
-
 };
 
 
+/* =========================
+   CUSTOMER
+========================= */
 
-/* ================= CURRENT CUSTOMER ================= */
-
-function getCurrentCustomer(){
-
-    return JSON.parse(
-        localStorage.getItem(
-            "loggedCustomer"
-        )
+let customer =
+    JSON.parse(
+        localStorage.getItem("loggedCustomer")
     );
+
+
+if(!customer){
+
+    customer = {
+        name:"Demo Customer",
+        mobile:"0000000000",
+        referral:"",
+        email:"",
+        upi:"",
+        account:"",
+        ifsc:""
+    };
 
 }
 
 
+document.getElementById("welcomeTitle").innerText =
+    "Welcome, " + (customer.name || "Customer");
 
-/* ================= LOAD CUSTOMER ================= */
 
-function loadCustomer(){
+document.getElementById("customerName").innerText =
+    customer.name || "-";
 
-    const customer =
-        getCurrentCustomer();
 
+document.getElementById("customerMobile").innerText =
+    customer.mobile || "-";
 
-    if(!customer){
 
-        window.location.href =
-            "index.html";
+/* =========================
+   GAME CHANGE
+========================= */
 
-        return;
-
-    }
-
-
-    document.getElementById(
-        "welcomeName"
-    ).innerText =
-        customer.name || "Customer";
-
-
-    document.getElementById(
-        "profileName"
-    ).value =
-        customer.name || "";
-
-
-    document.getElementById(
-        "profileMobile"
-    ).value =
-        customer.mobile || "";
-
-
-    document.getElementById(
-        "profileReferral"
-    ).value =
-        customer.referral || "";
-
-
-    document.getElementById(
-        "profileEmail"
-    ).value =
-        customer.email || "";
-
-
-    document.getElementById(
-        "profileUPI"
-    ).value =
-        customer.upi || "";
-
-
-    document.getElementById(
-        "profileAccount"
-    ).value =
-        customer.account || "";
-
-
-    document.getElementById(
-        "profileIFSC"
-    ).value =
-        customer.ifsc || "";
-
-
-    document.getElementById(
-        "infoName"
-    ).innerText =
-        customer.name || "—";
-
-
-    document.getElementById(
-        "infoMobile"
-    ).innerText =
-        customer.mobile || "—";
-
-
-    document.getElementById(
-        "infoReferral"
-    ).innerText =
-        customer.referral || "—";
-
-}
-
-
-
-/* ================= SAVE PROFILE ================= */
-
-function saveProfile(){
-
-    const customer =
-        getCurrentCustomer();
-
-
-    if(!customer){
-
-        return;
-
-    }
-
-
-    customer.email =
-        document.getElementById(
-            "profileEmail"
-        ).value.trim();
-
-
-    customer.upi =
-        document.getElementById(
-            "profileUPI"
-        ).value.trim();
-
-
-    customer.account =
-        document.getElementById(
-            "profileAccount"
-        ).value.trim();
-
-
-    customer.ifsc =
-        document.getElementById(
-            "profileIFSC"
-        ).value.trim();
-
-
-    localStorage.setItem(
-        "loggedCustomer",
-        JSON.stringify(customer)
-    );
-
-
-    let customers =
-        JSON.parse(
-            localStorage.getItem(
-                "luckyPickCustomers"
-            )
-        ) || [];
-
-
-    customers =
-        customers.map(item => {
-
-            if(
-                item.mobile ===
-                customer.mobile
-            ){
-
-                return customer;
-
-            }
-
-            return item;
-
-        });
-
-
-    localStorage.setItem(
-        "luckyPickCustomers",
-        JSON.stringify(customers)
-    );
-
-
-    const message =
-        document.getElementById(
-            "profileMessage"
-        );
-
-
-    message.style.display =
-        "block";
-
-
-    setTimeout(() => {
-
-        message.style.display =
-            "none";
-
-    },3000);
-
-}
-
-
-
-/* ================= GAME TYPE ================= */
-
-function setGame(
-    count,
-    element
-){
+function setGame(count, element){
 
     gameCount = count;
 
+    document.querySelectorAll(".tab")
+        .forEach(tab => tab.classList.remove("active"));
 
-    document
-        .querySelectorAll(
-            ".game-tab"
-        )
-        .forEach(tab => {
-
-            tab.classList.remove(
-                "active"
-            );
-
-        });
+    element.classList.add("active");
 
 
-    element.classList.add(
-        "active"
-    );
+    for(let i=1;i<=4;i++){
 
+        const box =
+            document.getElementById("n"+i);
 
-    for(
-        let i=1;
-        i<=4;
-        i++
-    ){
+        box.disabled = i > count;
 
-        const slot =
-            document.getElementById(
-                "n"+i
-            ).parentElement;
-
-
-        if(i <= count){
-
-            slot.classList.remove(
-                "disabled"
-            );
-
-        }
-        else{
-
-            slot.classList.add(
-                "disabled"
-            );
-
-            document.getElementById(
-                "n"+i
-            ).value="";
-
+        if(i > count){
+            box.value = "";
         }
 
     }
 
 
-    document.getElementById(
-        "quickGame"
-    ).innerText =
-        count +
-        (
-            count === 1
-            ? " Number"
-            : " Numbers"
-        );
+    document.getElementById("quickGame").innerText =
+        count + (count === 1 ? " Number" : " Numbers");
 
 
-    document.getElementById(
-        "quickAmount"
-    ).innerText =
+    document.getElementById("quickPoints").innerText =
         points[count];
 
 
@@ -2014,149 +1320,120 @@ function setGame(
 }
 
 
-
-/* ================= QUICK NUMBERS ================= */
+/* =========================
+   QUICK NUMBERS
+========================= */
 
 function updateQuickNumbers(){
 
-    let html="";
+    const container =
+        document.getElementById("quickNumbers");
+
+    container.innerHTML = "";
+
+    let hasNumber = false;
 
 
-    for(
-        let i=1;
-        i<=gameCount;
-        i++
-    ){
+    for(let i=1;i<=gameCount;i++){
 
         const value =
-            document.getElementById(
-                "n"+i
-            ).value;
+            document.getElementById("n"+i).value;
 
+        if(value){
 
-        html +=
-            `<span class="ball">
-                ${value || "—"}
-             </span>`;
+            hasNumber = true;
+
+            const ball =
+                document.createElement("div");
+
+            ball.className = "ball";
+            ball.innerText = value;
+
+            container.appendChild(ball);
+
+        }
 
     }
 
 
-    document.getElementById(
-        "quickNumbers"
-    ).innerHTML =
-        html;
+    if(!hasNumber){
+
+        container.innerHTML =
+            '<span style="color:#aaa;font-size:12px">None</span>';
+
+    }
 
 }
 
 
+/* Update when number changes */
 
-document
-    .querySelectorAll("select")
-    .forEach(select => {
+for(let i=1;i<=4;i++){
 
-        select.addEventListener(
-            "change",
-            updateQuickNumbers
-        );
+    document
+        .getElementById("n"+i)
+        .addEventListener("change", updateQuickNumbers);
 
-    });
+}
 
 
-
-/* ================= SUBMIT ENTRY ================= */
+/* =========================
+   SUBMIT ENTRY
+========================= */
 
 function submitEntry(){
 
-    const customer =
-        getCurrentCustomer();
+    let numbers = [];
 
 
-    if(!customer){
-
-        alert(
-            "Please login again."
-        );
-
-        window.location.href =
-            "index.html";
-
-        return;
-
-    }
-
-
-    let numbers=[];
-
-
-    for(
-        let i=1;
-        i<=gameCount;
-        i++
-    ){
+    for(let i=1;i<=gameCount;i++){
 
         const value =
-            document.getElementById(
-                "n"+i
-            ).value;
-
+            document.getElementById("n"+i).value;
 
         if(!value){
 
-            alert(
-                "Please select all required numbers."
+            showToast(
+                "Please select all numbers"
             );
 
             return;
 
         }
 
-
         numbers.push(value);
 
     }
 
 
+    const entry = {
 
-    const entry={
+        id:"LP" + Date.now(),
 
-        id:
-            "LP-"+Date.now(),
+        name:customer.name || "",
 
-        mobile:
-            customer.mobile,
+        mobile:customer.mobile || "",
 
-        name:
-            customer.name,
+        game:gameCount,
 
-        game:
-            gameCount,
+        numbers:numbers,
 
-        numbers:
-            numbers,
+        points:points[gameCount],
 
-        points:
-            points[gameCount],
+        status:"Submitted",
 
-        status:
-            "Pending",
-
-        createdAt:
-            new Date().toLocaleString()
+        date:new Date().toISOString(),
 
     };
 
 
-
     let entries =
         JSON.parse(
-            localStorage.getItem(
-                "luckyPickEntries"
-            )
-        ) || [];
+            localStorage.getItem("luckyPickEntries") || "[]"
+        );
 
 
-    entries.push(entry);
+    entries.unshift(entry);
 
 
     localStorage.setItem(
@@ -2165,226 +1442,268 @@ function submitEntry(){
     );
 
 
-
-    alert(
-        "Demo entry submitted successfully."
+    showToast(
+        "Demo entry submitted successfully ✓"
     );
 
-
-    for(
-        let i=1;
-        i<=4;
-        i++
-    ){
-
-        document.getElementById(
-            "n"+i
-        ).value="";
-
-    }
-
-
-    updateQuickNumbers();
 
     loadMyEntries();
 
 }
 
 
-
-/* ================= MY ENTRIES ================= */
+/* =========================
+   MY ENTRIES
+========================= */
 
 function loadMyEntries(){
 
-    const customer =
-        getCurrentCustomer();
-
-
-    if(!customer){
-
-        return;
-
-    }
-
-
-    const allEntries =
-        JSON.parse(
-            localStorage.getItem(
-                "luckyPickEntries"
-            )
-        ) || [];
-
-
-    const entries =
-        allEntries
-        .filter(
-            entry =>
-                entry.mobile ===
-                customer.mobile
-        )
-        .reverse();
-
-
     const container =
-        document.getElementById(
-            "myEntries"
+        document.getElementById("myEntries");
+
+
+    let entries =
+        JSON.parse(
+            localStorage.getItem("luckyPickEntries") || "[]"
+        );
+
+
+    entries =
+        entries.filter(
+            entry =>
+            entry.mobile === customer.mobile
         );
 
 
     if(entries.length === 0){
 
         container.innerHTML =
-            `<div class="no-data">
-                No entries yet.
-             </div>`;
+            '<div class="empty">No entries yet.</div>';
 
         return;
 
     }
 
 
-    container.innerHTML="";
+    container.innerHTML = "";
 
 
     entries.forEach(entry => {
 
-
-        let numbersHTML="";
-
-
-        entry.numbers.forEach(
-            number => {
-
-                numbersHTML +=
-                    `<span class="small-ball">
-                        ${number}
-                     </span>`;
-
-            }
-        );
-
-
         const div =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
+
+        div.className = "entry";
 
 
-        div.className =
-            "entry";
+        const balls =
+            entry.numbers
+            .map(
+                n =>
+                `<div class="small-ball">${escapeHTML(n)}</div>`
+            )
+            .join("");
 
 
         div.innerHTML = `
 
             <div class="entry-top">
 
-                <span class="entry-id">
-                    ${escapeHTML(entry.id)}
-                </span>
+                <div>
 
-                <span class="status">
+                    <strong>
+                        ${escapeHTML(entry.game)}
+                        Number Game
+                    </strong>
+
+                    <div class="entry-id">
+                        ${escapeHTML(entry.id)}
+                    </div>
+
+                </div>
+
+                <div class="status">
                     ${escapeHTML(entry.status)}
-                </span>
+                </div>
 
             </div>
 
 
-            <div class="entry-date">
-
-                📅 ${escapeHTML(entry.createdAt)}
-
-            </div>
-
-
-            <div class="summary-row">
-
-                <span>
-                    Game
-                </span>
-
-                <b>
-                    ${entry.game}
-                    ${
-                        entry.game === 1
-                        ? " Number"
-                        : " Numbers"
-                    }
-                </b>
-
-            </div>
-
-
-            <div class="entry-number-row">
-
-                ${numbersHTML}
-
-            </div>
-
-
-            <div class="summary-row">
-
-                <span>
-                    Demo Points
-                </span>
-
-                <b>
-                    ${entry.points}
-                </b>
-
+            <div class="entry-numbers">
+                ${balls}
             </div>
 
         `;
 
 
-        container.appendChild(
-            div
-        );
+        container.appendChild(div);
 
     });
 
 }
 
 
+/* =========================
+   PROFILE
+========================= */
 
-/* ================= WINNING RESULTS ================= */
+function openProfile(){
 
-function loadResults(){
+    document.getElementById("profileName").value =
+        customer.name || "";
 
-    const results =
+    document.getElementById("profileMobile").value =
+        customer.mobile || "";
+
+    document.getElementById("profileReferral").value =
+        customer.referral || "";
+
+    document.getElementById("profileEmail").value =
+        customer.email || "";
+
+    document.getElementById("profileUPI").value =
+        customer.upi || "";
+
+    document.getElementById("profileAccount").value =
+        customer.account || "";
+
+    document.getElementById("profileIFSC").value =
+        customer.ifsc || "";
+
+
+    document
+        .getElementById("profileModal")
+        .classList.add("show");
+
+}
+
+
+function closeProfile(){
+
+    document
+        .getElementById("profileModal")
+        .classList.remove("show");
+
+}
+
+
+function saveProfile(){
+
+    customer.email =
+        document.getElementById("profileEmail").value.trim();
+
+    customer.upi =
+        document.getElementById("profileUPI").value.trim();
+
+    customer.account =
+        document.getElementById("profileAccount").value.trim();
+
+    customer.ifsc =
+        document.getElementById("profileIFSC").value.trim();
+
+
+    localStorage.setItem(
+        "loggedCustomer",
+        JSON.stringify(customer)
+    );
+
+
+    /* Update registered customer also */
+
+    let customers =
         JSON.parse(
-            localStorage.getItem(
-                "luckyPickResults"
-            )
-        ) || [];
-
-
-    const body =
-        document.getElementById(
-            "resultsBody"
+            localStorage.getItem("luckyPickCustomers") || "[]"
         );
 
 
-    body.innerHTML="";
+    const index =
+        customers.findIndex(
+            c => c.mobile === customer.mobile
+        );
+
+
+    if(index !== -1){
+
+        customers[index] = {
+            ...customers[index],
+            email:customer.email,
+            upi:customer.upi,
+            account:customer.account,
+            ifsc:customer.ifsc
+        };
+
+
+        localStorage.setItem(
+            "luckyPickCustomers",
+            JSON.stringify(customers)
+        );
+
+    }
+
+
+    showToast(
+        "Profile saved successfully ✓"
+    );
+
+
+    setTimeout(
+        closeProfile,
+        500
+    );
+
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function loadResults(){
+
+    const body =
+        document.getElementById("resultBody");
+
+
+    let results =
+        JSON.parse(
+            localStorage.getItem("luckyPickResults") || "[]"
+        );
+
+
+    /* Support old single-result format */
+
+    if(
+        results.length === 0 &&
+        localStorage.getItem("luckyPickResult")
+    ){
+
+        const old =
+            JSON.parse(
+                localStorage.getItem("luckyPickResult")
+            );
+
+
+        results = [{
+            date:new Date().toLocaleDateString("en-IN"),
+            numbers:[
+                old.r1,
+                old.r2,
+                old.r3,
+                old.r4
+            ]
+        }];
+
+    }
 
 
     if(results.length === 0){
 
         body.innerHTML = `
-
             <tr>
-
                 <td colspan="5">
-
-                    <div class="no-data">
-
-                        No results published yet.
-
-                    </div>
-
+                    No results published yet.
                 </td>
-
             </tr>
-
         `;
 
         return;
@@ -2392,136 +1711,132 @@ function loadResults(){
     }
 
 
-    results
-        .slice()
-        .reverse()
-        .forEach(result => {
+    body.innerHTML = "";
 
 
-            const tr =
-                document.createElement(
-                    "tr"
-                );
+    results.forEach(result => {
+
+        const numbers =
+            result.numbers || [];
 
 
-            tr.innerHTML = `
-
-                <td>
-                    ${escapeHTML(
-                        result.date
-                    )}
-                </td>
+        const tr =
+            document.createElement("tr");
 
 
-                <td>
-                    <span class="result-ball">
-                        ${result.box1}
-                    </span>
-                </td>
+        tr.innerHTML = `
+
+            <td>
+                ${escapeHTML(result.date || "-")}
+            </td>
+
+            <td>
+                ${resultNum(numbers[0])}
+            </td>
+
+            <td>
+                ${resultNum(numbers[1])}
+            </td>
+
+            <td>
+                ${resultNum(numbers[2])}
+            </td>
+
+            <td>
+                ${resultNum(numbers[3])}
+            </td>
+
+        `;
 
 
-                <td>
-                    <span class="result-ball">
-                        ${result.box2}
-                    </span>
-                </td>
+        body.appendChild(tr);
 
-
-                <td>
-                    <span class="result-ball">
-                        ${result.box3}
-                    </span>
-                </td>
-
-
-                <td>
-                    <span class="result-ball">
-                        ${result.box4}
-                    </span>
-                </td>
-
-            `;
-
-
-            body.appendChild(
-                tr
-            );
-
-        });
+    });
 
 }
 
 
+function resultNum(value){
 
-/* ================= TEXT SAFETY ================= */
+    if(!value){
+        return "-";
+    }
 
-function escapeHTML(text){
-
-    return String(text)
-
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
+    return `
+        <span class="result-num">
+            ${escapeHTML(value)}
+        </span>
+    `;
 
 }
 
 
-
-/* ================= LOGOUT ================= */
+/* =========================
+   LOGOUT
+========================= */
 
 function logout(){
 
-    localStorage.removeItem(
-        "loggedCustomer"
-    );
+    localStorage.removeItem("loggedCustomer");
 
-
-    window.location.href =
-        "index.html";
+    window.location.href = "index.html";
 
 }
 
 
+/* =========================
+   TOAST
+========================= */
 
-/* ================= START ================= */
+function showToast(message){
 
-loadCustomer();
+    const toast =
+        document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },2200);
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   START
+========================= */
 
 setGame(
     1,
-    document.querySelector(
-        ".game-tab"
-    )
+    document.querySelector(".tab")
 );
 
 loadMyEntries();
 
 loadResults();
 
-
 </script>
-
 
 </body>
 </html>
